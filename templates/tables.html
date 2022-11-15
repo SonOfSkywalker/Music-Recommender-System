@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Music Adviser</title>
+  </head>
+  <body>
+    <div id="header">
+       <img id='logo' src="{{url_for('static', filename='logo_2.png')}}" alt="">
+       <h1> You searched for {{ song[0] }} by {{ song[1] }} </h1>
+    </div>
+
+    <div>
+      <button id='back' type="button" name="button" onclick='back()'>Go Back</button>
+      <button id='stop' type="button" name="button" onclick='stop()' disabled>Stop Music</button>
+    </div>
+
+
+    <div class="container">
+
+
+       {% for table in tables %}
+       <img class='play' src="{{url_for('static', filename='play.png')}}" onclick="play('{{ table[2] }}')">
+       <span><strong style='text-decoration:underline;'>{{ table[0] }}</strong> by {{ table[1] }}</span>
+
+       {% endfor %}
+
+
+    </div>
+
+
+  </body>
+</html>
+
+
+<style media="screen">
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+  .container{
+    width: 50%;
+    display: grid;
+    grid-template-columns:  1fr 20fr ;
+    grid-gap: 10px;
+    align-items: center;
+  }
+
+  body{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  span, button{
+    margin: 20px 0px;
+
+  }
+
+  audio{
+    display: none;
+  }
+
+  span, button, p, h1{
+    font-family: 'Open Sans', sans-serif;
+  }
+
+  .play{
+    width: 30px;
+    margin: 20px 0px;
+  }
+
+  #logo{
+    width: 50px;
+    margin-right: 20px;
+  }
+
+  #header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  button{
+		border: none;
+		background-color: #645fce;
+		color: white;
+    margin: 10px;
+		padding: 10px;
+		border-radius: 5px;
+		font-size: 15px;
+	}
+
+  button:disabled{
+    opacity: 0.4;
+  }
+
+</style>
+
+
+<script>
+      var audio = new Audio("https://p.scdn.co/mp3-preview/0d023697726731f23b55c2b16a8d2dc2d33c317f?cid=64f00e0d6c1b4a4f9c37e331d24323c6");
+
+      function play(url) {
+        document.getElementById('stop').disabled = false;
+        audio.pause();
+        audio.currentTime = 0;
+        audio.src = url;
+
+        audio.play();
+      }
+
+      function stop() {
+        audio.pause();
+        audio.currentTime = 0;
+        document.getElementById('stop').disabled = true;
+      }
+
+      function back() {
+        window.location.href = '/'
+      }
+ </script>

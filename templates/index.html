@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+	<head>
+        <title>Music Adviser</title>
+	</head>
+	<body>
+		<div id="container">
+			<form method="post" action='search'>
+					<div class="">
+
+					</div>
+				  <img src="{{url_for('static', filename='logo.png')}}" alt="">
+					<input type="text" name="song" id="text" placeholder="Enter a song title"/>
+					<select name="mode">
+						<option value="normal">Normal search</option>
+						<option value="genre">Genre enhanced search</option>
+					</select>
+	 			  <input type="submit" value="Submit" id="button"/>
+			</form>
+		</div>
+
+
+	</body>
+</html>
+
+
+<style media="screen">
+	@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+	#container{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+	}
+	form{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+	}
+	input, select{
+		font-family: 'Open Sans', sans-serif;
+		margin: 10px;
+		padding: 10px;
+		border-radius: 5px;
+		font-size: 15px;
+	}
+
+	img{
+		width: 400px;
+	}
+
+	#text{
+		width: 100%;
+		border: 1px solid grey;
+	}
+
+	#button{
+		border: none;
+		background-color: #645fce;
+		color: white;
+	}
+
+
+
+
+</style>
+
+
+<script type="text/javascript">
+	document.getElementById('container').style.height = window.innerHeight - 100 + "px";
+
+</script>
